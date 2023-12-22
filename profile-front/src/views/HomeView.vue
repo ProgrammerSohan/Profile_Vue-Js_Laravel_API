@@ -23,11 +23,23 @@
             <tr v-else v-for="stu, i in this.students" :key="stu.id">
               <td v-text="(i+1)"></td>
               <td v-text="stu.id"></td>
-              <td v-text="stu.photo"></td>
+              <td >
+                <img v-if="stu.photo" style="width:150px !important;" :src="stu.photo" class="img-thumbnail" alt="">
+                <img v-else height="30" src="" class="img-thumbnail" alt="">
+              </td>
               <td v-text="stu.name"></td>
               <td v-text="stu.lastname"></td>
-              <td v-text="stu.created_at"></td>
+              <td v-text="new Date(stu.created_at).toLocaleDateString('en-US')"></td>
               <td>
+                <router-link :to="{path:'view/'+stu.id}" class="btn btn-info">
+                  <i class="fa-solid fa-eye"></i>
+                </router-link>
+                <router-link :to="{path:'edit/'+stu.id}" class="btn btn-warning">
+                  <i class="fa-solid fa-edit"></i>
+                </router-link>
+                <button class="btn btn-danger">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
 
               </td>
             </tr>
