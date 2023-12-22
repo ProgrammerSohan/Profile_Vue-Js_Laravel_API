@@ -38,8 +38,18 @@ class StudentsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $exist = Student::find($id);
-         return isset($exist);
+         $e = Student::find($id);
+         if(isset($e)){
+            $e->name = $request->name;
+            $e->lastname = $request->lastname;
+            $e->photo = $request->photo;
+            return $e->save();
+         }else{
+            return response()->json([
+                'error'=>true,
+                'message'=>"No exist student."
+            ]);
+         }
     }
 
     /**
