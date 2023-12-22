@@ -43,7 +43,18 @@ class StudentsController extends Controller
             $e->name = $request->name;
             $e->lastname = $request->lastname;
             $e->photo = $request->photo;
-            return $e->save();
+            //return $e->save();
+            if($e->save()){
+                return response()->json([
+                    'data'=>$e,
+                    'message'=> "successfully updated student",
+                ]);
+            }else{
+                return response()->json([
+                    'data'=>$e,
+                    'message'=>"student not updated"
+                ]);
+            }
          }else{
             return response()->json([
                 'error'=>true,
