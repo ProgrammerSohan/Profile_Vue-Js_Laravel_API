@@ -25,7 +25,7 @@
               <td v-text="stu.id"></td>
               <td >
                 <img v-if="stu.photo" style="width:150px !important;" :src="stu.photo" class="img-thumbnail" alt="">
-                <img v-else height="30" src="" class="img-thumbnail" alt="">
+                <img v-else style="width: 150px !important;" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-256.png" class="img-thumbnail" alt="">
               </td>
               <td v-text="stu.name"></td>
               <td v-text="stu.lastname"></td>
