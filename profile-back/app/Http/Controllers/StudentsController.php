@@ -21,8 +21,14 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
          $inputs = $request->input();
-         $requests = Student::create($inputs);
-         return $requests;
+         //$requests = Student::create($inputs);
+        // return $requests;
+        $e = Student::create($inputs);
+        return response()->json([
+            'data'=>$e,
+            'message'=>"successfully inserted student"
+
+        ]);
     }
 
     /**
@@ -30,7 +36,18 @@ class StudentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $e = Student::find($id);
+        if(isset($e)){
+            return response()->json([
+                'data'=>$e,
+                'message'=>"student found successfully",
+            ]);
+        }else{
+            return response()->json([
+                'error'=>true,
+                'message'=>"No student found",
+            ]);
+        }
     }
 
     /**
@@ -68,6 +85,25 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $e = Student::find($id);
+        if(isset($e)){
+            $res=Student::destroy($id);
+            if($res){
+                return response()->json([
+                    'data'=>$e,
+                    'message'=>"Student successfully Deleted",
+                ]);
+            }else{
+                return response()->json([
+                    'data'=>$e,
+                    'message'=>"Student doesn't exist",
+                ]);
+            }
+        }else{
+            return response()->json([
+                'error'=>true,
+                'message'=>"Student does not exist",
+            ]);
+        }
     }
 }
