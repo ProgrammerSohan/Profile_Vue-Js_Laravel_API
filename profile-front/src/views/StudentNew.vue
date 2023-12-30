@@ -8,7 +8,7 @@
           <div class="card-body">
             <form action="">
               <div class="d-grid col-6 mx-auto mb-3">
-                <img v-if="this.photo" height="100" :src="this.photo" id="fotoimg" alt="" class="img-thumbnail">
+                <img v-if="this.photo" height="100" :src="this.photo" id="photoimg" alt="" class="img-thumbnail">
                 <img v-else height="100" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-256.png" class="img-thumbnail" id="photoimg" alt="">
 
               </div>
@@ -23,6 +23,13 @@
                 <span class="input-group-text"> <i class="fa-solid fa-user"></i></span>
                 <input type="text" v-model="lastname" id="lastname" placeholder="Input last name" required class="form-control" maxlength="50">
 
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-gift"></i></span>
+                <input v-on:change="previewPhoto" type="file" accept="image/png, image/jpeg, image/gif" class="form-control">
+              </div>
+              <div class="d-grid col-6 mx-auto mb-3">
+                 <button class="btn btn-success"> <i class="fa-solid fa-floppy-disk"> Register</i></button>
               </div>
 
             </form>
@@ -52,10 +59,16 @@
       keep(){
         this.charging = true;
       },
-      eliminate(id,name){
-        confirm('http://localhost:8000/api/v1/students/',id,'Delete record','Record you want to delete '+name+'?')
-        this.charging=false;
-      }
+       previewPhoto(event){
+          var reader = new FileReader();
+          reader.readAsDataURL(event.target.files[0]);
+          reader.onload = function(){
+             var myPhoto = document.getElementById('photoimg');
+             myPhoto.src = reader.result;
+             this.photo = myPhoto.src;
+          }
+
+       }
 
     }
 
