@@ -31,10 +31,10 @@
               <td v-text="stu.lastname"></td>
               <td v-text="new Date(stu.created_at).toLocaleDateString('en-US')"></td>
               <td>
-                <router-link :to="{path:'view/'+stu.id}" class="btn btn-info">
+                <router-link :to="{path:'viewE/'+stu.id}" class="btn btn-info">
                   <i class="fa-solid fa-eye"></i>
                 </router-link>
-                <router-link :to="{path:'edit/'+stu.id}" class="btn btn-warning">
+                <router-link :to="{path:'editE/'+stu.id}" class="btn btn-warning">
                   <i class="fa-solid fa-edit"></i>
                 </router-link>
                 <button class="btn btn-danger" v-on:click="$event=>eliminate(stu.id,stu.name)">
