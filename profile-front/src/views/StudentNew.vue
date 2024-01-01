@@ -25,7 +25,7 @@
 
      <div class="input-group mb-3">
       <span class="input-group-text"><i class="fa-solid fa-gift"></i></span>
-      <input v-on:change="previewPhoto" type="file" accept="image/png, image/jpeg, image/jpg, image/gif" class="form-control">
+      <input v-on:change="previewPhoto" type="file" accept="image/png,image/jpeg,image/gif" class="form-control">
      </div>
 
      <div class="d-grid col-6 mx-auto mb-3">

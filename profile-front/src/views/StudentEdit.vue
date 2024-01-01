@@ -6,6 +6,12 @@
              Edit Student
           </div>
           <div class="card-body">
+            <div class="d-grid col-6 mx-auto mb-3">
+              <router-link :to="{path:'/'}" class="btn btn-info">
+                <i class="fa-solid fa-arrow-left"></i> Return to list
+              </router-link>
+            </div>
+
       <form v-on:submit="update">
     <div class="d-grid col-6 mx-auto mb-3">
      <img v-if="this.photo" height="100" :src="this.photo" id="photoimg" class="img-thumbnail" alt="">
